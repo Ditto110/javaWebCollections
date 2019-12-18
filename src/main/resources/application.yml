@@ -1,0 +1,37 @@
+server:
+    port: 8080
+    tomcat:
+        uri-encoding: UTF-8
+        max-threads: 1000
+        min-spare-threads: 30
+    servlet:
+        context-path: /adclean
+
+spring:
+    profiles:
+        active: dev
+    jackson:
+        time-zone: GMT+8
+        date-format: yyyy-MM-dd HH:mm:ss
+    servlet:
+        multipart:
+            max-file-size: 100MB
+            max-request-size: 100MB
+            enabled: true
+    resources: # 指定静态资源的路径
+        static-locations: classpath:/static/,classpath:/templates/
+    jmx:
+        default-domain: adclean
+    freemarker:
+        request-context-attribute: req
+        suffix: .html
+        content-type: text/html
+        enabled: true
+        cache: false
+        template-loader-path: classpath:/templates/
+        charset: UTF-8  
+
+# Mybatis配置
+mybatis:
+    mapperLocations: classpath:mapper/**/*.xml
+    configLocation: classpath:mybatis.xml
